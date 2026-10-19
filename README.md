@@ -6,39 +6,38 @@
 
 ---
 
-## 给最终用户：怎么用
+## 快速开始（从源码构建）
 
-### ① 下载分卷包
-
-去 [Releases 页面](https://github.com/yangyang-222/vr3d-play-flat-to-vr/releases/latest) 下载 **两个分卷**：
-
-- `VR3D-v1.0.0.zip.001`（约 1.8 GB）
-- `VR3D-v1.0.0.zip.002`（约 1.8 GB）
-
-两个文件放**同一个文件夹**里。
-
-### ② 合并成一个 zip
-
-在该文件夹里打开 PowerShell，执行：
+### ① 装依赖
 
 ```powershell
-cmd /c copy /b VR3D-v1.0.0.zip.001 + VR3D-v1.0.0.zip.002 VR3D.zip
+# Python 3.10-3.13 + CUDA 12.x
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128
+pip install dxcam opencv-python numpy
+
+# MiDaS 模型 (~80MB)：model-small-traced.pt
+# 从 https://github.com/isl-org/MiDaS 下载，放到 models/ 目录
+
+# Godot 4.4.1 stable (Windows 64)
+# https://github.com/godotengine/godot/releases/tag/4.4.1-stable
 ```
 
-得到 `VR3D.zip`，右键解压即可。
+### ② 启动
 
-> 或者装个 [7-Zip](https://www.7-zip.org/)，直接右键 `.001` 文件 → 解压。
+```powershell
+# 1. 把游戏开成窗口化/无边框
+# 2. 先戴头显，Virtual Desktop 连上、OpenXR 激活
 
-### ③ 启动
+# 3. 启动 Python 服务端（参数是游戏窗口标题关键词）
+python midas_sbs_server.py <游戏窗口标题>
 
-1. 把要转 VR 的游戏开成**窗口化/无边框**（别用独占全屏，否则捕窗捕不到）
-2. 先戴头显，Virtual Desktop 连上、OpenXR 激活
-3. 双击解压目录里的 **`启动VR3D.bat`**
-4. 等 15 秒预热，游戏自动拉到前台，头显里就是全屏立体画面
+# 4. 启动 Godot 客户端
+Godot_v4.4.1-stable_win64.exe --path godot/VR3DXr
+```
 
-ESC 退出。
+等 15 秒预热，游戏自动拉到前台，头显里就是全屏立体画面。ESC 退出。
 
-### ④ VD 里的设置
+### ③ VD 里的设置
 
 Virtual Desktop → 桌面模式 → **3D 模式 → SBS**。
 
