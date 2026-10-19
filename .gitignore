@@ -1,0 +1,58 @@
+# ===== Python virtual environments (huge) =====
+venv/
+venv313/
+__pycache__/
+*.pyc
+
+# ===== Godot engine binaries (not source) =====
+godot/Godot_v*.exe
+godot/Godot*.zip
+godot/*.txt
+godot/godot_appdata/
+
+# ===== Godot editor cache & export templates =====
+godot/VR3DXr/.godot/
+godot/VR3DXr/export_templates/
+godot/VR3DXr/feature_profiles/
+godot/VR3DXr/script_templates/
+godot/VR3DXr/text_editor_themes/
+
+# ===== Godot test/demo content (large videos) =====
+godot/VR3DXr/.code/
+godot/VR3DXr/environment/
+
+# ===== Development scratch (root) =====
+bench_*.py
+profile_*.py
+test_*.py
+enum_*.py
+check_*.py
+grab_*.py
+list_win.py
+make_scene.py
+window_*.py
+*.png
+*.jpg
+*.jpeg
+*.raw
+*.log
+*.txt
+*.err
+*.out
+
+# ===== Dev tooling folder =====
+.code/
+models_hub/
+tools/
+
+# ===== Models (80MB, users download from MiDaS official) =====
+models/
+
+# ===== Build output / releases (uploaded as Release assets, not in repo) =====
+dist/
+
+# ===== OS / editor junk =====
+Thumbs.db
+.DS_Store
+.idea/
+.vscode/

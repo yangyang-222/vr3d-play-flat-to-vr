@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1"]
+[ext_resource type="Shader" path="res://shaders/dibr.gdshader" id="2"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_1"]
+size = Vector2(4.82625, 2.714765625)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1"]
+shader = ExtResource("2")
+
+[sub_resource type="Environment" id="Environment_1"]
+background_mode = 0
+tonemap_mode = 0
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+current = true
+
+[node name="ScreenQuad" type="MeshInstance3D" parent="XROrigin3D"]
+transform = Transform3D(0.6666667, 0, 0, 0, 0.6666667, 0, 0, 0, 0.6666667, 0, 1.55, -2.4)
+mesh = SubResource("QuadMesh_1")
+material_override = SubResource("ShaderMaterial_1")
